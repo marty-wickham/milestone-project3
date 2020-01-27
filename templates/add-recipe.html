@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+<h3>Add Recipe</h3>
+
+<div class="row">
+	<form action="" method="POST">
+		<div class="form-group">
+			<label for="recipe_name">Name</label>
+			<input type="text" class="form-control" id="recipe_name" name="recipe_name">
+		</div>
+		<div class="form-group">
+			<label for="recipe_description">Description</label>
+			<textarea type="text" class="form-control" id="recipe_description" name="recipe_description" rows="4" cols="50"></textarea>
+        </div>
+        <div class="form-group">
+			<label for="recipe_ingredients">Ingredients</label>
+			<textarea type="text" class="form-control" id="recipe_ingredients" name="recipe_ingredients" rows="4" cols="50"></textarea>
+        </div>
+        <div class="form-group">
+			<label for="recipe_method">Method</label>
+			<textarea type="text" class="form-control" id="recipe_method" name="recipe_method" rows="4" cols="50"></textarea>
+        </div>
+		<button type="submit" class="btn btn-primary" name="action">Add recipe!</button>
+	</form>
+</div>
+{% endblock %}
