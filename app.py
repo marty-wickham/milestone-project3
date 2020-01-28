@@ -11,10 +11,16 @@ app.config["MONGO_URI"] = os.getenv('MONGO_URI', 'mongodb://localhost')
 
 mongo = PyMongo(app)
 
+
 @app.route('/')
+@app.route('/index')
+def index():
+    return render_template("index.html", recipes=mongo.db.recipes.find())
+
+
 @app.route('/get_recipes')
 def get_recipes():
-    return render_template("index.html", recipes=mongo.db.recipes.find())
+    return render_template("recipes.html", recipes=mongo.db.recipes.find())
 
 
 @app.route('/view_recipe/<recipe_id>')

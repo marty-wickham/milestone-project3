@@ -5,3 +5,15 @@
 img {
     max-width: 100%;
 }
+
+.container-fluid {
+    height: 700px;
+    background-image: url("https://www.azamara.co.uk/sites/default/files/heros/med-food-hero.jpg");
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover; /* Resize the background image to cover the entire container */
+}
+
+.form-group {
+    font-size: 1.5em;
+}
