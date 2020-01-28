@@ -1,9 +1,7 @@
 .navbar-brand {
-    font-size: 2em;
+    font-size: 2rem;
 }
 
-
-.recipe-card {
-    width: 33%;
+img {
+    max-width: 100%;
 }
-
