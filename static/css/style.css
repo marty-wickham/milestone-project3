@@ -17,3 +17,10 @@ img {
 .form-group {
     font-size: 1.5em;
 }
+
+footer {
+    background-color: #343a40;
+    color: #fff;
+    min-height: 100px;
+    margin: 0;
+}

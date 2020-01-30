@@ -1,18 +1,15 @@
 {% extends "base.html" %}
+{% block heading %}
+<h1 class="page-heading">Add Recipe</h1>
+{% endblock %}
 {% block content %}
-<div class="row mt-3">
-	<div class="col">
-		<h1 class="page-heading">Add Recipe</h1>
-	</div>
-</div>
-<hr class="mt-0">
 <div class="row">
 	<div class="col-md-8 offset-md-2">
 		<form action="{{url_for('insert_recipe')}}" method="POST">
 			<div class="form-group">
 				<i class="fas fa-carrot"></i>
 				<label for="recipe_name">Name</label>
-				<input type="text" class="form-control" id="recipe_name" name="recipe_name">
+				<input type="text" class="form-control" id="recipe_name" name="recipe_name" required>
 		    </div>
 			<div class="form-group">
 				<i class="fas fa-link"></i>
@@ -34,7 +31,7 @@
 				<label for="recipe_method">Method</label>
 				<textarea type="text" class="form-control" id="recipe_method" name="recipe_method" rows="4" cols="50"></textarea>
 			</div>
-			<button type="submit" class="btn btn-primary" name="action">Add recipe!</button>
+			<button type="submit" class="btn btn-dark" name="action">Add recipe!</button>
 		</form>
 	</div>
 </div>

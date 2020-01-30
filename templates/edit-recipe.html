@@ -1,11 +1,9 @@
 {% extends "base.html" %}
+{% block heading %}
+<h1 class="page-heading">Add Recipe</h1>
+{% endblock %}
 {% block content %}
-<div class="row mt-3">
-	<div class="col">
-		<h1 class="page-heading">Edit Recipe</h1>
-	</div>
-</div>
-<hr class="mt-0">
+{% block content %}
 <div class="row">
     <div class="col-md-8 offset-md-2">
         <form action="{{url_for('update_recipe', recipe_id=recipe._id)}}" method="POST">
@@ -34,7 +32,7 @@
                 <label for="recipe_method">Method</label>
                 <textarea type="text" class="form-control" id="recipe_method" name="recipe_method" rows="4" cols="50">{{recipe.method}}</textarea>
             </div>
-            <button type="submit" class="btn btn-primary" name="action">Update recipe!</button>
+            <button type="submit" class="btn btn-dark" name="action">Update recipe!</button>
         </form>
     </div>
 </div>

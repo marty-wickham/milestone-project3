@@ -1,13 +1,15 @@
 import os
 import env
-from flask import Flask, render_template, redirect, request, url_for
+from flask import Flask, render_template, redirect, request, url_for, session
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
+import bcrypt
 
 app = Flask(__name__)
 
 app.config["MONGODB_NAME"] = 'milestone-project'
 app.config["MONGO_URI"] = os.getenv('MONGO_URI', 'mongodb://localhost')
+app.config["SECRET_KEY"] = os.getenv('SECRET_KEY')
 
 mongo = PyMongo(app)
 
@@ -16,6 +18,38 @@ mongo = PyMongo(app)
 @app.route('/index')
 def index():
     return render_template("index.html", recipes=mongo.db.recipes.find())
+
+"""
+@app.route('/login', methods=['POST', 'GET'])
+def login():
+    users = mongo.db.users
+    login_user = users.find_one({'username': request.form['username']})
+
+    if login_user:
+        if bcrypt.hashpw(request.form['password'].encode('utf-8'), login_user['password'].encode('utf-8')) == login_user['password'].encode('utf-8'):
+            session['username'] = request.form['username']
+            return redirect(url_for('login'))
+
+    return "Invalid username/password combination"
+"""
+
+
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    if request.method == 'POST':
+        users = mongo.db.users
+        existing_user = users.find_one({'username': request.form.get('username')})
+
+        if existing_user is None:
+            hashpass = bcrypt.hashpw(request.form['password'].encode('utf-8'), bcrypt.gensalt())
+            users.insert_one({'username': request.form['username'],
+                              'email': request.form['email'],
+                              'password': hashpass})
+            session['username'] = request.form['username']
+            return redirect(url_for('index'))
+        
+        return 'That username already exists!'
+    return render_template('register.html')
 
 
 @app.route('/get_recipes')
