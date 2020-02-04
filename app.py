@@ -39,15 +39,18 @@ def register():
     if request.method == 'POST':
         users = mongo.db.users
         existing_user = users.find_one({'username': request.form.get('username')})
+        existing_email = users.find_one({'email': request.form.get('email')})
 
         if existing_user is None:
-            hashpass = bcrypt.hashpw(request.form['password'].encode('utf-8'), bcrypt.gensalt())
-            users.insert_one({'username': request.form['username'],
-                              'email': request.form['email'],
-                              'password': hashpass})
-            session['username'] = request.form['username']
-            return redirect(url_for('index'))
-        
+            if existing_email is None:
+                hashpass = bcrypt.hashpw(request.form['password'].encode('utf-8'), bcrypt.gensalt())
+                users.insert_one({'username': request.form['username'].capitalize(),
+                                  'email': request.form['email'].capitalize(),
+                                  'password': hashpass})
+                session['username'] = request.form['username']
+                return redirect(url_for('index'))
+            
+            return 'An account with that email address already exists!'
         return 'That username already exists!'
     return render_template('register.html')
 
