@@ -17,7 +17,9 @@ mongo = PyMongo(app)
 @app.route('/')
 @app.route('/index')
 def index():
-    return render_template("index.html", recipes=mongo.db.recipes.find())
+    four_recipes = mongo.db.recipes.find().sort([('views', -1)]).limit(4)
+
+    return render_template("index.html", recipes=four_recipes)
 
 """
 @app.route('/login', methods=['POST', 'GET'])
@@ -74,7 +76,11 @@ def add_recipe():
 @app.route('/insert_recipe', methods=['POST'])
 def insert_recipe():
     recipes = mongo.db.recipes
-    recipes.insert_one(request.form.to_dict())
+    recipes.insert_one({'title': request.form.get('recipe_name').capitalize(),
+                        'image_url': request.form.get('image_url'),
+                        'description': request.form.get('recipe_description').capitalize(),
+                        'ingredients': request.form.get('recipe_ingredients').capitalize(),
+                        'method': request.form.get('recipe_ingredients').capitalize()})
 
     return redirect(url_for('get_recipes'))
 

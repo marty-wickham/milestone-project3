@@ -24,3 +24,10 @@ footer {
     min-height: 100px;
     margin-top: 2rem;
 }
+
+.carousel-inner {
+    position: relative;
+    width: 60%;
+    overflow: hidden;
+    margin: 0 auto;
+}
