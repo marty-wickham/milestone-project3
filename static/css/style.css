@@ -1,17 +1,46 @@
+/*---------------------------- Navbar --------------------*/
+
 .navbar-brand {
     font-size: 2rem;
+}
+
+.navbar-collapse {
+    flex-grow: 0;
+}
+
+
+.welcome {
+    margin: 0 auto;
+    color: #fff
 }
 
 img {
     max-width: 100%;
 }
 
+/*---------------------------- Index-page --------------------*/
+
 .container-fluid {
-    height: 700px;
-    background-image: url("https://www.azamara.co.uk/sites/default/files/heros/med-food-hero.jpg");
+    background-color: #007c94;
     background-position: center; /* Center the image */
     background-repeat: no-repeat; /* Do not repeat the image */
     background-size: cover; /* Resize the background image to cover the entire container */
+}
+
+.main-display {
+
+}
+
+.homepage-cards {
+    background-color: #007c94;
+    height: 45vh;
+    position: relative;
+}
+
+.frame {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 .form-group {
@@ -22,7 +51,6 @@ footer {
     background-color: #343a40;
     color: #fff;
     min-height: 100px;
-    margin-top: 2rem;
 }
 
 .carousel-inner {
@@ -31,3 +59,4 @@ footer {
     overflow: hidden;
     margin: 0 auto;
 }
+
