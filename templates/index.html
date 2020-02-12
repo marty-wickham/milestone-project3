@@ -1,28 +1,45 @@
 {% extends "base.html" %}
 {% block content %}
-<div class="container-fluid">
-	<div class="row pt-3">
-		<div class="col">
-			<form class="form-inline">
-				<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-				<button class="btn btn-dark" type="submit">Search</button>
-			</form>
+<!-- jumbotron -->
+<section class="callout-container">
+	<div class="opaque-overlay">
+		<div class="jumbotron text-center">
+			<h1>Start your collection today!</h1>
+            <hr>
+			<p class="lead">
+				This website was made by Marty Wickham in order to show case my skills in
+				my first Full Stack website. For you, it's a place to build a collection
+				of your favourite recipes, all in one place!</p>
+			<p>
+				<a href="{{ url_for('register') }}" class="btn btn-dark my-2">Sign Up!</a>
+			</p>
 		</div>
 	</div>
-	<section id="main-display" class="container pt-5 pb-5">
+</section>
+
+<!-- top viewed recipes -->
+<section class="album py-5 bg-light">
+	<div class="container">
 		<div class="row">
 			{% for recipe in recipes %}
 			<div class="col-md-4">
-				<a href="{{url_for('view_recipe', recipe_id=recipe._id)}}">
-					<div class="card homepage-cards">
-						<div class="frame">
-							<img src="{{recipe.image_url}}" class="card-img-top" alt="{{recipe.description}}">
-                        </div>
+				<div class="card mb-4 shadow-sm">
+					<img src="{{ recipe.image_url }}" alt="{{ recipe.description }} ">
+					<div class="card-body">
+						<p class="card-text">This is a wider card with supporting text below as a natural lead-in to
+							additional content. This content is a little bit longer.</p>
+						<div class="d-flex justify-content-between align-items-center">
+							<div class="btn-group">
+								<button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+								<button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+							</div>
+							<small class="text-muted">Views: {{ recipe.views }}</small>
+						</div>
 					</div>
-				</a>
+				</div>
 			</div>
 			{% endfor %}
 		</div>
-	</section>
-</div>
+	</div>
+</section>
 {% endblock %}

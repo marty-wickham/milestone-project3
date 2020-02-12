@@ -91,11 +91,19 @@ def add_recipe():
 @app.route('/insert_recipe', methods=['POST'])
 def insert_recipe():
     recipes = mongo.db.recipes
+
+    # Converts the form input string for ingredients into a list, the data will be stored as an array in mongdb
+    ingredients = request.form.get('recipe_ingredients')
+    ingredients_list = list(ingredients.split("\n"))
+    # Converts the form input string for method into a list, the data will be stored as an array in mongdb
+    method = request.form.get('recipe_method')
+    method_list = list(method.split("\n"))
+
     recipes.insert_one({'title': request.form.get('recipe_name').capitalize(),
                         'image_url': request.form.get('image_url'),
                         'description': request.form.get('recipe_description').capitalize(),
-                        'ingredients': request.form.get('recipe_ingredients').capitalize(),
-                        'method': request.form.get('recipe_ingredients').capitalize()})
+                        'ingredients': ingredients_list,
+                        'method': res})
 
     return redirect(url_for('get_recipes'))
 
@@ -110,13 +118,21 @@ def edit_recipe(recipe_id):
 @app.route('/update_recipe/<recipe_id>', methods=['POST'])
 def update_recipe(recipe_id):
     recipes = mongo.db.recipes
+
+    # Converts the form input string for ingredients into a list, the data will be stored as an array in mongdb
+    ingredients = request.form.get('recipe_ingredients')
+    ingredients_list = list(ingredients.split("  "))
+    # Converts the form input string for method into a list, the data will be stored as an array in mongdb
+    method = request.form.get('recipe_method')
+    method_list = list(method.split("  "))
+
     recipes.update(
         {'_id': ObjectId(recipe_id)},
         {'title': request.form.get('recipe_name').capitalize(),
          'image_url': request.form.get('image_url'),
          'description': request.form.get('recipe_description').capitalize(),
-         'ingredients': request.form.get('recipe_ingredients').capitalize(),
-         'method': request.form.get('recipe_method').capitalize()})
+         'ingredients': ingredients_list,
+         'method': method_list})
     
     return redirect(url_for('get_recipes'))
 

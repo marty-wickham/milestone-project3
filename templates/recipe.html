@@ -5,7 +5,6 @@
     <div class="row">
         <div class="col">
             <h1 class="page-heading">{{recipe.title}}</h1>
-            <p>Views: {{recipe.views}}</p>
         </div>
     </div>
     <hr class="mt-0">
@@ -18,23 +17,11 @@
                 
             </div>
             <div class="row">
-            
+                <p>Views: {{recipe.views}}</p>
             </div>
         </div>
     </div>
     <div class="row mt-2">
-        <div class="col-md-6">
-            <h3 class="mt-4">Method</h3>
-            <table class="table">
-                <tbody>
-                {% for method in recipe.method %}
-                    <tr>
-                        <td>{{ method }}</td>
-                    </tr>
-                {% endfor %}
-                </tbody>
-            </table>
-        </div>
         <div class="col-md-6">
             <h3 class="mt-4">Ingredients</h3>
             <table class="table">
@@ -42,6 +29,18 @@
                 {% for ingredient in recipe.ingredients %}
                     <tr>
                         <td>{{ ingredient }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-6">
+            <h3 class="mt-4">Method</h3>
+            <table class="table">
+                <tbody>
+                {% for method in recipe.method %}
+                    <tr>
+                        <td>{{ method }}</td>
                     </tr>
                 {% endfor %}
                 </tbody>
