@@ -115,21 +115,30 @@
 	<script>
 		$(document).ready(function(){
             
+            // A function that will check the length of the user input and return an alert if the passowrd is not long enough
             $("#password").on("focus", function(){
-                $("#passwordMessage").html("Password must contain at least 8 characters");
-                    $("#password").on("keyup", function(){
-                        if($("#password").val().length >= 8){
+
+                $("#password").on("keyup", function(){
+                    if($("#password").val().length >= 8){
                         $("#passwordMessage").html("")
                     }
                     else{
                         $("#passwordMessage").html("Password must contain at least 8 characters");
                     }
-                    })
-            });
-            $("#password").on("blur", function(){
-                $("#passwordMessage").html("");
+                });
             });
 
+            $("#password").on("blur", function(){
+                if($("#password").val().length >= 8 || $("#password").val().length == 0){
+                    $("#passwordMessage").html("");
+                }
+                
+            });
+            
+            // A function to validate that the repeat password matches the password field
+            $("#r-password").on("focus", function(){
+
+            });
 
             $('#r-password').on('keyup', function(){
                 if ($("#r-password").val() != 0) {
