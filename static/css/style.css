@@ -3,6 +3,10 @@ img {
     max-width: 100%;
 }
 
+span {
+    font-size: 1rem;
+}
+
 /*---------------------------- Navbar --------------------*/
 
 .navbar-brand {
@@ -12,7 +16,6 @@ img {
 .navbar-collapse {
     flex-grow: 0;
 }
-
 
 .welcome {
     margin: 0 auto;

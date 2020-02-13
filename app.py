@@ -73,13 +73,12 @@ def get_recipes():
 @app.route('/view_recipe/<recipe_id>')
 def view_recipe(recipe_id):
 
+    the_recipe = mongo.db.recipes.find_one({'_id': ObjectId(recipe_id)})
+    # Increase the view count by one every time a recipe is viewed.
     mongo.db.recipes.find_one_and_update(
         {'_id': ObjectId(recipe_id)},
         {'$inc': {'views': 1}}
         )
-
-    the_recipe = mongo.db.recipes.find_one({'_id': ObjectId(recipe_id)})
-    
 
     return render_template('recipe.html', recipe=the_recipe)
 
@@ -103,7 +102,8 @@ def insert_recipe():
                         'image_url': request.form.get('image_url'),
                         'description': request.form.get('recipe_description').capitalize(),
                         'ingredients': ingredients_list,
-                        'method': res})
+                        'method': method_list,
+                        'user': session['username']})
 
     return redirect(url_for('get_recipes'))
 
@@ -133,7 +133,7 @@ def update_recipe(recipe_id):
          'description': request.form.get('recipe_description').capitalize(),
          'ingredients': ingredients_list,
          'method': method_list})
-    
+
     return redirect(url_for('get_recipes'))
 
 
@@ -142,6 +142,15 @@ def delete_recipe(recipe_id):
     mongo.db.recipes.remove({'_id': ObjectId(recipe_id)})
 
     return redirect(url_for('get_recipes'))
+
+
+@app.route('/my_recipes')
+def my_recipes():
+    
+    my_recipes = mongo.db.recipes.find({'user': session['username']})
+
+    return render_template('my-recipes.html', recipes=my_recipes)
+
 
 if (__name__) == '__main__':
     app.run(host=os.environ.get('IP'),
