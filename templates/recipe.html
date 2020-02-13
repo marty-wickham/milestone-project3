@@ -10,14 +10,28 @@
     <hr class="mt-0">
     <div class="row">
         <div class="col-md-6">
-            <img src="{{recipe.image_url}}" alt="{{recipe.description}}">
+            <img src="{{ recipe.image_url }}" alt="{{ recipe.description }}">
         </div>
         <div class="col-md-6">
             <div class="row">
-                
+                <div class="col">
+                    {{ recipe.description }}
+                    <hr>
+                </div>
             </div>
             <div class="row">
-                <p>Views: {{recipe.views}}</p>
+                <div class="col">
+                    <p>Serves: {{recipe.serves}}</p>
+                    <p>Cooks in: {{recipe.time}}</p>
+                    <p>Difficulty: {{recipe.difficulty}}</p>
+                    <hr>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <p>Submitted by: {{ recipe.user }}</p>
+                    <p>Views: {{recipe.views}}</p>
+                </div>  
             </div>
         </div>
     </div>

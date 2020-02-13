@@ -10,39 +10,70 @@
         </div>
         <hr class="mt-0">
         <div class="row">
-            <div class="col-md-8 offset-md-2">
-                <form action="{{url_for('insert_recipe')}}" method="POST">
-                    <div class="form-group">
-                        <i class="fas fa-carrot"></i>
-                        <label for="recipe_name">Name</label>
-                        <input type="text" class="form-control" id="recipe_name" name="recipe_name">
+            <div class="col">
+                <form action="{{ url_for('insert_recipe') }}" method="post">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-6 mb-4 col-10 offset-1 offset-md-0">
+                            <div class="form-group">
+                                <i class="fas fa-carrot"></i>
+                                <label for="recipe_name">Name</label>
+                                <input type="text" class="form-control" id="recipe_name" name="recipe_name">
+                            </div>
+                            <div class="form-group">
+                                <i class="fas fa-link"></i>
+                                <label for="image_url">Image URL</label>
+                                <input type="text" class="form-control" id="image_url" name="image_url">
+                            </div>
+                            <div class="form-group">
+                                <i class="fas fa-file-alt"></i>
+                                <label for="recipe_description">Description</label>
+                                <textarea type="text" class="form-control" id="recipe_description" name="recipe_description" rows="4" cols="25"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <i class="fas fa-tags"></i>
+                                <label for="tags">Tags</label>
+                                <input type="text" class="form-control" id="tags" name="tags">
+                            </div>
+                            <div class="form-group">
+                                <i class="far fa-clock"></i>
+                                <label for="time">Time</label>
+                                <input type="text" class="form-control" id="time" name="time">
+                            </div>
+                            <div class="form-group">
+                                <i class="fas fa-tags"></i>
+                                <label for="difficulty">Difficulty</label>
+                                <select name="difficulty" id="difficulty">
+                                    <option value="easy">Easy</option>
+                                    <option value="medium">Medium</option>
+                                    <option value="hard">Hard</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <i class="fas fa-users"></i>
+                                <label for="serves">Serves</label>
+                                <input type="number" id="serves" name="serves" step="1" min="1" max="12">
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 mb-4 col-10 offset-1 offset-md-0">
+                            <div class="form-group">
+                                <i class="fas fa-list-ul"></i>
+                                <label for="recipe_ingredients">Ingredients</label>
+                                <textarea type="text" class="form-control" id="recipe_ingredients" name="recipe_ingredients" rows="28" cols="25"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 mb-4 col-10 offset-1 offset-md-0">
+                            <div class="form-group">
+                                <i class="fas fa-list-ol"></i>
+                                <label for="recipe_method">Method</label>
+                                <textarea type="text" class="form-control" id="recipe_method" name="recipe_method" rows="28" cols="25"></textarea>
+                            </div>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <i class="fas fa-link"></i>
-                        <label for="image_url">Image URL</label>
-                        <input type="text" class="form-control" id="image_url" name="image_url">
+                    <div class="row">
+                        <div class="col">
+                            <button type="submit" class="btn btn-dark" name="action">Add recipe!</button>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <i class="fas fa-file-alt"></i>
-                        <label for="recipe_description">Description</label>
-                        <textarea type="text" class="form-control" id="recipe_description" name="recipe_description" rows="4" cols="25"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <i class="fas fa-list-ul"></i>
-                        <label for="recipe_ingredients">Ingredients</label>
-                        <textarea type="text" class="form-control" id="recipe_ingredients" name="recipe_ingredients" rows="4" cols="50"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <i class="fas fa-list-ol"></i>
-                        <label for="recipe_method">Method</label>
-                        <textarea type="text" class="form-control" id="recipe_method" name="recipe_method" rows="4" cols="50"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <i class="fas fa-tags"></i>
-                        <label for="tags">Tags</label>
-                        <input type="text" class="form-control" id="tags" name="tags">
-                    </div>
-                    <button type="submit" class="btn btn-dark" name="action">Add recipe!</button>
                 </form>
             </div>
         </div>

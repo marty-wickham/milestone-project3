@@ -101,6 +101,10 @@ def insert_recipe():
     recipes.insert_one({'title': request.form.get('recipe_name').capitalize(),
                         'image_url': request.form.get('image_url'),
                         'description': request.form.get('recipe_description').capitalize(),
+                        'tags': request.form.get('tags'),
+                        'serves': request.form.get('serves'),
+                        'time': request.form.get('time'),
+                        'difficulty': request.form.get('difficulty'),
                         'ingredients': ingredients_list,
                         'method': method_list,
                         'user': session['username']})
