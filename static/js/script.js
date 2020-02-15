@@ -5,11 +5,9 @@ $(document).ready(function () {
             $("#password").on("focus", function(){
 
                 $("#password").on("keyup", function(){
-                    if($("#password").val().length >= 8){
+                    $("#passwordMessage").html("Password must contain at least 8 characters");
+                    if($("#password").val().length >= 8 || $("#password").val().length == 0){
                         $("#passwordMessage").html("")
-                    }
-                    else{
-                        $("#passwordMessage").html("Password must contain at least 8 characters");
                     }
                 });
             });
@@ -17,10 +15,10 @@ $(document).ready(function () {
             $("#password").on("blur", function(){
                 if($("#password").val().length >= 8 || $("#password").val().length == 0){
                     $("#passwordMessage").html("");
-                }
-                
+                }  
             });
             
+
             // A function to validate that the repeat password matches the password field
             $("#r-password").on("focus", function(){
 

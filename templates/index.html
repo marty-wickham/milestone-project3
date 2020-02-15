@@ -1,23 +1,23 @@
 {% extends "base.html" %}
 {% block content %}
 <!-- jumbotron -->
-<section class="callout-container">
-	<div class="opaque-overlay">
-		<div class="jumbotron text-center">
-			<div class="container">
-				<h1>Start your collection today!</h1>
-				<hr>
-				<p class="lead">
-					This website was made by Marty Wickham in order to show case my skills in
-					my first Full Stack website. For you, it's a place to build a collection
-					of your favourite recipes, all in one place!</p>
-				<p>
-					<a href="{{ url_for('register') }}" class="btn btn-dark my-2">Sign Up!</a>
-				</p>
-			</div>
-		</div>
-	</div>
-</section>
+
+
+<div class="jumbotron text-center">
+    <div class="container">
+        <h1>Start your collection today!</h1>
+        <hr>
+        <p class="lead">
+            This website was made by Marty Wickham in order to show case my skills in
+            my first Full Stack website. For you, it's a place to build a collection
+            of your favourite recipes, all in one place!</p>
+        <p>
+            <a href="{{ url_for('register') }}" class="btn btn-dark my-2">Sign Up!</a>
+        </p>
+    </div>
+</div>
+
+
 
 <!-- top viewed recipes -->
 <section class="album py-5 bg-light">

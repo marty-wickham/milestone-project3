@@ -25,8 +25,7 @@ span {
 
 /*---------------------------- Index-page --------------------*/
 
-.callout-container {
-    height: 60vh;
+.jumbotron {
     background-image: url("https://image.shutterstock.com/image-photo/wide-variety-spices-herbs-on-260nw-1249477660.jpg");
     background-size: cover;
     -webkit-background-size: cover;
@@ -36,10 +35,6 @@ span {
     align-items: center;
     justify-content: center;
     position: relative;
-}
-
-.jumbotron {
-    background-color: transparent;
     color: white;
 }
 
