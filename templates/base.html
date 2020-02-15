@@ -112,53 +112,7 @@
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
 		integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
 	</script>
-	<script>
-		$(document).ready(function(){
-            
-            // A function that will check the length of the user input and return an alert if the passowrd is not long enough
-            $("#password").on("focus", function(){
-
-                $("#password").on("keyup", function(){
-                    if($("#password").val().length >= 8){
-                        $("#passwordMessage").html("")
-                    }
-                    else{
-                        $("#passwordMessage").html("Password must contain at least 8 characters");
-                    }
-                });
-            });
-
-            $("#password").on("blur", function(){
-                if($("#password").val().length >= 8 || $("#password").val().length == 0){
-                    $("#passwordMessage").html("");
-                }
-                
-            });
-            
-            // A function to validate that the repeat password matches the password field
-            $("#r-password").on("focus", function(){
-
-            });
-
-            $('#r-password').on('keyup', function(){
-                if ($("#r-password").val() != 0) {
-                    if ($('#r-password').val() != $('#password').val()) {
-                        $('#r-password-message').html("Passwords do not match!");
-                        $('#register-btn').attr("disabled", "disabled");
-                    }
-                    else {
-                        $('#r-password-message').html("Passwords Match!")
-                        $('#register-btn').removeAttr("disabled")
-                    }
-                }
-                else {
-                    $('#r-password-message').html("")
-                    $('#register-btn').removeAttr("disabled")
-                }
-            })
-        });
-	</script>
-
+    <script src="{{url_for('static', filename='js/script.js')}}"></script>
 </body>
 
 </html>
