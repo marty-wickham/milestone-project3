@@ -10,7 +10,7 @@ span {
 /*---------------------------- Navbar --------------------*/
 
 .navbar-brand {
-    font-size: 2rem;
+    font-size: 3rem;
 }
 
 .navbar-collapse {
@@ -36,6 +36,7 @@ span {
     justify-content: center;
     position: relative;
     color: white;
+    margin-bottom: 0;
 }
 
 .opaque-overlay {
@@ -45,6 +46,10 @@ span {
     height: 100%;
     width: 100%;
     background-color: rgba(0, 0, 0, 0.5);
+}
+
+.callout-container {
+    z-index: 1;
 }
 
 /*---------------------------- Form-styling --------------------*/
