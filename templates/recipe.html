@@ -17,28 +17,28 @@
 <section class="container-fluid bg-light">
 	<div class="container mb-4">
 		<div class="row">
-			<div class="col-md-6">
+			<div class="col-md-6 mb-2">
 				<img src="{{ recipe.image_url }}" alt="{{ recipe.description }}">
             </div>
             <div class="col-md-6">
                 <div class="row">
                     <div class="col">
-                        {{ recipe.description }}
+                        <p>{{ recipe.description }}</p>   
                         <hr>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col">
-                        <p>Serves: {{recipe.serves}}</p>
-                        <p>Cooks in: {{recipe.time}}</p>
-                        <p>Difficulty: {{recipe.difficulty}}</p>
+                        <p><i class="far fa-clock"></i><span class="icon-data">{{recipe.time}}</span></p>
+                        <p><i class="fas fa-users"></i><span class="icon-data">{{recipe.serves}}</span></p>
+                        <p><span class="key">Difficulty:</span> <span>{{ recipe.difficulty.capitalize() }}</span></p>
                         <hr>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col">
-                        <p>Submitted by: {{ recipe.user }}</p>
-                        <p>Views: {{recipe.views}}</p>
+                        <p><span class="key">Submitted by:</span> {{ recipe.user }}</p>
+                        <p><span class="key">Views:</span> {{recipe.views}}</p>
                     </div>
                 </div>
             </div>

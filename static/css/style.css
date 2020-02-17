@@ -1,10 +1,18 @@
 /*---------------------------- General styling --------------------*/
 img {
-    max-width: 100%;
+    width: 100%;
 }
 
 span {
     font-size: 1rem;
+}
+
+.icon-data {
+    margin-left: .5rem;
+}
+
+.key {
+    font-weight: bold;
 }
 
 /*---------------------------- Navbar --------------------*/
@@ -26,7 +34,7 @@ span {
 /*---------------------------- Index-page --------------------*/
 
 .jumbotron {
-    background-image: url("https://image.shutterstock.com/image-photo/wide-variety-spices-herbs-on-260nw-1249477660.jpg");
+    background-image: url("../images/banner.png");
     background-size: cover;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -61,7 +69,16 @@ span {
 /*---------------------------- Footer --------------------*/
 
 footer {
-    background-color: #343a40;
+    background-color: #1d2124;
     color: #fff;
     min-height: 100px;
+    position: relative; // Center the child element
+}
+
+.copyright {
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    
 }

@@ -50,19 +50,17 @@ def register():
     if request.method == 'POST':
         users = mongo.db.users
         existing_user = users.find_one({'username': request.form.get('username')})
-        existing_email = users.find_one({'email': request.form.get('email')})
 
         if existing_user is None:
-            if existing_email is None:
-                hashpass = bcrypt.hashpw(request.form['password'].encode('utf-8'), bcrypt.gensalt())
-                users.insert_one({'username': request.form['username'],
-                                  'email': request.form['email'],
-                                  'password': hashpass})
-                session['username'] = request.form['username']
-                return redirect(url_for('index'))
+            hashpass = bcrypt.hashpw(request.form['password'].encode('utf-8'), bcrypt.gensalt())
+            users.insert_one({'username': request.form['username'],
+                                'email': request.form['email'],
+                                'password': hashpass})
+            session['username'] = request.form['username']
+            return redirect(url_for('index'))
             
-            error = "An account with that email address already exists!"
-        error = "An account with that username already exists!"
+
+        flash("An account with that username already exists!")
     return render_template('register.html', error=error)
 
 
@@ -101,8 +99,8 @@ def insert_recipe():
 
     recipes.insert_one({'title': request.form.get('recipe_name').capitalize(),
                         'image_url': request.form.get('image_url'),
-                        'description': request.form.get('recipe_description').capitalize(),
-                        'tags': request.form.get('tags'),
+                        'description': request.form.get('recipe_description').lower(),
+                        'tags': request.form.get('tags').lower(),
                         'serves': request.form.get('serves'),
                         'time': request.form.get('time'),
                         'difficulty': request.form.get('difficulty'),
@@ -135,7 +133,11 @@ def update_recipe(recipe_id):
         {'_id': ObjectId(recipe_id)},
         {'title': request.form.get('recipe_name').capitalize(),
          'image_url': request.form.get('image_url'),
-         'description': request.form.get('recipe_description').capitalize(),
+         'description': request.form.get('recipe_description').lower(),
+         'tags': request.form.get('tags').lower(),
+         'serves': request.form.get('serves'),
+         'time': request.form.get('time'),
+         'difficulty': request.form.get('difficulty'),
          'ingredients': ingredients_list,
          'method': method_list})
 

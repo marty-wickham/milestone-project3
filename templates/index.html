@@ -29,7 +29,7 @@
 					</div>
 					<div class="card-footer">
 						<div class="d-flex justify-content-between align-items-center">
-							<button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+							<a type="button" class="btn btn-sm btn-outline-secondary" href="{{url_for('view_recipe', recipe_id=recipe._id)}}">View</a>
 							<small class="text-muted">Views: {{ recipe.views }}</small>
 						</div>
 					</div>

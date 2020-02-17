@@ -60,24 +60,14 @@
 			</div>
 		</nav>
 	</header>
-	{% with messages = get_flashed_messages() %}
-	{% if messages %}
-	<ul class=flashes>
-		{% for message in messages %}
-		<li>{{ message }}</li>
-		{% endfor %}
-	</ul>
-	{% endif %}
-	{% endwith %}
-
-
+	
 	{% block content %}
 	{% endblock %}
 
 	<footer>
 		<div id="footer" class="container text-center">
 			<div class="row">
-				<p class="mx-auto">Copyright 2020 - Created by Marty Wickham</p>
+				<p class="copyright">Copyright 2020 - Created by Marty Wickham</p>
 			</div>
 		</div>
 	</footer>
@@ -103,7 +93,7 @@
 								<label for="password">Password</label>
 								<input type="password" class="form-control" id="password" name="password" required>
                         </div>
-								<button type="submit" class="btn btn-dark" name="action">Login!
+						<button type="submit" class="btn btn-dark" name="action">Login!
                         </button>
 					</form>
 				</div>
