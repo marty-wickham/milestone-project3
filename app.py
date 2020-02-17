@@ -46,6 +46,7 @@ def logout():
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
+    error = None
     if request.method == 'POST':
         users = mongo.db.users
         existing_user = users.find_one({'username': request.form.get('username')})
@@ -60,9 +61,9 @@ def register():
                 session['username'] = request.form['username']
                 return redirect(url_for('index'))
             
-            flash("An account with that email address already exists!")
-        flash("That username already exists!")
-    return render_template('register.html')
+            error = "An account with that email address already exists!"
+        error = "An account with that username already exists!"
+    return render_template('register.html', error=error)
 
 
 @app.route('/get_recipes')
