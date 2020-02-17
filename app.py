@@ -73,6 +73,7 @@ def get_recipes():
 def view_recipe(recipe_id):
 
     the_recipe = mongo.db.recipes.find_one({'_id': ObjectId(recipe_id)})
+    
     # Increase the view count by one every time a recipe is viewed.
     mongo.db.recipes.find_one_and_update(
         {'_id': ObjectId(recipe_id)},
@@ -99,7 +100,7 @@ def insert_recipe():
 
     recipes.insert_one({'title': request.form.get('recipe_name').capitalize(),
                         'image_url': request.form.get('image_url'),
-                        'description': request.form.get('recipe_description').lower(),
+                        'description': request.form.get('recipe_description').capitalize(),
                         'tags': request.form.get('tags').lower(),
                         'serves': request.form.get('serves'),
                         'time': request.form.get('time'),
@@ -133,7 +134,7 @@ def update_recipe(recipe_id):
         {'_id': ObjectId(recipe_id)},
         {'title': request.form.get('recipe_name').capitalize(),
          'image_url': request.form.get('image_url'),
-         'description': request.form.get('recipe_description').lower(),
+         'description': request.form.get('recipe_description').capitalize(),
          'tags': request.form.get('tags').lower(),
          'serves': request.form.get('serves'),
          'time': request.form.get('time'),
