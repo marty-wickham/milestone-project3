@@ -1,5 +1,6 @@
 # Third Milestone Project / Grubhub
 ____
+The live site: (https://database-milestone-project.herokuapp.com/)
 
 Grubhub is a site to showcase my skills in my first Full Stack website. The purpose of the website is to allow a user to access the website to
 view and search for recipes. The user will also have the option of registering an account on the website. Once they have done this the user
@@ -206,7 +207,6 @@ include:
 5. Enter the correct password anf click login to check that I am redirected to the index page.
 6. Check for the welcome message in the navbar.
 
-
 I used a *code validator* on [W3 Markup Validation Service](https://validator.w3.org/#validate_by_input) to checks for any errors that needed to be 
 fixed in my code. 
 
@@ -235,6 +235,16 @@ For the main layout of this project I took inspiration from [Jamie Oliver's cook
 This is also where I found most of the recipes to populate the website. 
 
 #### Back End
-To complete this project I relied on additional reasearch in order to get the reistration and login features of the page fully functional.
+To complete this project I relied on additional reasearch in order to get the reistration and login features of the page fully 
+functional.
 
+To help me understand the logic required for the registration and login features of my site I watched this video:
 * (https://www.youtube.com/watch?v=vVx1737auSE)
+In order to create a form that could check whether or not the passwords enterd matched certain criteria I found these pages
+that helped me figure out how to access the values being entered, as well as the appropriate event handlers I needed to use.
+* (https://stackoverflow.com/questions/21727317/how-to-check-confirm-password-field-in-form-without-reloading-page/21727518)
+* (https://www.w3schools.com/howto/howto_js_password_validation.asp)
+To use message flashing I had to read the documentation for the Flask website to help me unserstand how Flask messagin worked.
+* (https://flask.palletsprojects.com/en/1.1.x/quickstart/#sessions)
+To get the search bar functioning I relied on the code provided to me by my mentor who helped me to undertsand how it worked
+* (https://github.com/5pence/recipeGlut/blob/master/app.py)

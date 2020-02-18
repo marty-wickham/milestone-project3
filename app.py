@@ -32,6 +32,7 @@ def login():
         login_user = users.find_one({'username': request.form.get('username')})
 
         if login_user:
+            # If the user exists check to see that the password from the form matches the password in the database
             if bcrypt.hashpw(request.form.get('password').encode('utf-8'), login_user['password']) == login_user['password']:
                 session['username'] = request.form['username']
                 return redirect(url_for('index'))
@@ -39,13 +40,14 @@ def login():
                 error = 2
         else:
             error = 1
-            
+
         return render_template('login.html', error=error)
     return render_template('login.html', error=error)
 
 
 @app.route('/logout')
 def logout():
+    # Clear the session data
     session.clear()
     return redirect(url_for('index'))
 
@@ -59,7 +61,9 @@ def register():
         existing_email = users.find_one({'email': request.form.get('email')})
 
         if existing_user is None:
+            # If the user does not exist, check to see if the email has already been used to make an account
             if existing_email is None:
+                # Take the password from the form and encrypt it 
                 hashpass = bcrypt.hashpw(request.form['password'].encode('utf-8'), bcrypt.gensalt())
                 users.insert_one({'username': request.form['username'],
                                     'email': request.form['email'],
@@ -125,7 +129,9 @@ def insert_recipe():
 @app.route('/edit_recipe/<recipe_id>')
 def edit_recipe(recipe_id):
     the_recipe = mongo.db.recipes.find_one({'_id': ObjectId(recipe_id)})
-    # Store the ingredients and method keys in a variable to convert into strings
+
+    # Store the ingredients and method fields from the_recipe object in separate variables to convert into strings
+    # This will get remove the list syntax out of the text field for editing.
     ingredients_list = the_recipe["ingredients"]
     method_list = the_recipe["method"]
     ingredients = ' '.join([str(elem) for elem in ingredients_list])
