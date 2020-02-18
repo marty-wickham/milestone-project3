@@ -25,17 +25,14 @@ Media content – The recipes will be displayed in a card format. Each card will
 #### What does the client need?
 * A brand name to help make the site more recognisable and create a sense of familiarity.
 * A mobile first website approach
-* A catalogue page displaying any recipes added by users, including a brief outline of what each recipe is.
-* A catalogue page for the use to display all of the recipes in their personal collection.
-* A registration page
+* A "Recipes" page displaying all of the recipes added by users, including a brief outline of what each recipe is.
+* A "My Recipes" page for the user to display all of the recipes in their personal collection.
+* A registration page for a user to create an account.
 * A login page
 * An "Add recipe" page
-* An "View recipe" page
+* A "View recipe" page
 * An "Edit recipe" page
-
-#### What else can we provide for the client?
-* A news section that will update fans with any new products that are being released, or any new updates or bug fixes for current products
-* A contact section to leave feedback about games, or for any potential collaborations with other people or businesses in the industry.
+* A "Delete recipe" button
 
 #### User scenarios
 **Scenario:**
@@ -145,20 +142,20 @@ important tool for me through the creative process as it helped me to isolate wh
 include:
 
 * Test my python application
-The very first thing to test in this project was my python application setup.
-1. Create a root view that renders a simple <h1> tag with the content "Hello World".
+  The very first thing to test in this project was my python application setup.
+1. Create a root view that renders a simple h1 tag with the content "Hello World".
 2. Run the application via the terminal.
 3. Check to see that the element is rendered.
 
 * Test a template:
-The second thing to test in this project was the templates.
+  The second thing to test in this project was the templates.
 1. Create a base template
-2. Create an index template containing a <h1> tag with the content "index template"
+2. Create an index template containing a h1 tag with the content "index template"
 3. Run the application via the terminal.
 4. Check to see that index.html is rendered.
 
 * Connection to the database:
-Next I tested the connection to my MongoDB database.
+  Next I tested the connection to my MongoDB database.
 1. Create a sample recipe in the database.
 2. Create a function in the index view to return everything from the database.
 3. Add the html to return everything from the document into an unordered list
@@ -224,21 +221,21 @@ slipped under the rader.
 ## Deployment 
 1. The project was written and developed in the Gitpod IDE.
 2. A local repository was intialized using Git. Regular changes were commited to the local repository.
-3. Github was used as a remote repository, and at the end of each development session, all local commits were pushed to ()
+3. Github was used as a remote repository, and at the end of each development session, all local commits were pushed to (https://github.com/martycistudent/milestone-project3)
 4. The project’s source file was published from GitHub repository to GitHub pages using GitHub default settings via the master branch.
 5. GitHub Pages was then enabled to publish the site from the master branch following this path:
 .. 1. GitHub repository settings page.
 .. 2. Scrolling down to the GitHub Pages Repository box, the master branch was selected from the dropdown menu.
 .. 3. The action was saved by clicking the save button.
 
-6. The Project’s source file is now published as a site on GitHub Pages at [Astirian-Rae Games](https://martycistudent.github.io/First-milestone-project/)
+6. The Project’s source file is now published as a site on Heroku at [Grubhub](https://martycistudent.github.io/First-milestone-project/)
 
 ## Credits
 ### Media 
 The full width background image on the index page of the website was taken from a stock image website called [shutterstock](https://www.shutterstock.com/search/food+background) 
 
 ### Acknowledgements 
-#### Front End
+#### Front End Design
 For the main layout of this project I took inspiration from [Jamie Oliver's cooking website](https://www.jamieoliver.com/) and [BBC goodfood](https://www.bbcgoodfood.com/).
 This is also where I found most of the recipes to populate the website. 
 
