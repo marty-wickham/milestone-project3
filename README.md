@@ -207,11 +207,6 @@ include:
 6. Check for the welcome message in the navbar.
 
 
-* Layout - mostly padding and margins, to ensure adequate spacing between elements as well as sizing for elements.
-
-* Media queries - certain elements that might overflow such as titles, on very small screen sizes. Viweing the change of elements with screen sizes allowed
-  me to make the necessary changes so that elemnts were proportional across differnet screen widths. 
-
 I used a *code validator* on [W3 Markup Validation Service](https://validator.w3.org/#validate_by_input) to checks for any errors that needed to be 
 fixed in my code. 
 
@@ -242,3 +237,4 @@ This is also where I found most of the recipes to populate the website.
 #### Back End
 To complete this project I relied on additional reasearch in order to get the reistration and login features of the page fully functional.
 
+* (https://www.youtube.com/watch?v=vVx1737auSE)

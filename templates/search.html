@@ -1,4 +1,4 @@
-{% extends base.html %}
+{% extends 'base.html' %}
 {% block content %}
 <section class="container-fluid bg-light">
 	<div class="container">
@@ -6,7 +6,7 @@
 		<hr class="mb-0">
 		<div class="row">
 			<div class="col">
-				<h1 class="page-heading">Results</h1>
+				<h1 class="page-heading">Results for: {{ search }}</h1>
 			</div>
 		</div>
 		<hr class="mt-0">
@@ -32,4 +32,4 @@
 		</div>
 	</div>
 </section>
-{% endblock #}
+{% endblock %}

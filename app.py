@@ -26,6 +26,7 @@ def index():
 
 @app.route('/login', methods=['POST', 'GET'])
 def login():
+    error = None
     if request.method == 'POST':
         users = mongo.db.users
         login_user = users.find_one({'username': request.form.get('username')})
@@ -34,10 +35,13 @@ def login():
             if bcrypt.hashpw(request.form.get('password').encode('utf-8'), login_user['password']) == login_user['password']:
                 session['username'] = request.form['username']
                 return redirect(url_for('index'))
+            else:
+                error = 2
+        else:
+            error = 1
             
-            return "Invalid password"
-        return "Invalid username"
-    return render_template("login.html")
+        return render_template('login.html', error=error)
+    return render_template('login.html', error=error)
 
 
 @app.route('/logout')
@@ -52,17 +56,21 @@ def register():
     if request.method == 'POST':
         users = mongo.db.users
         existing_user = users.find_one({'username': request.form.get('username')})
+        existing_email = users.find_one({'email': request.form.get('email')})
 
         if existing_user is None:
-            hashpass = bcrypt.hashpw(request.form['password'].encode('utf-8'), bcrypt.gensalt())
-            users.insert_one({'username': request.form['username'],
-                                'email': request.form['email'],
-                                'password': hashpass})
-            session['username'] = request.form['username']
-            return redirect(url_for('index'))
+            if existing_email is None:
+                hashpass = bcrypt.hashpw(request.form['password'].encode('utf-8'), bcrypt.gensalt())
+                users.insert_one({'username': request.form['username'],
+                                    'email': request.form['email'],
+                                    'password': hashpass})
+                session['username'] = request.form['username']
+                return redirect(url_for('index'))
             
+            error = 2
+            return render_template('register.html', error=error)
 
-        flash("An account with that username already exists!")
+        error = 1
     return render_template('register.html', error=error)
 
 
@@ -177,19 +185,11 @@ def view_myrecipe(recipe_id):
 
 @app.route('/search')
 def search():
-    """Provides logic for search bar"""
-    orig_query = request.args['query']
-    # using regular expression setting option for any case
-    query = {'$regex': re.compile('.*{}.*'.format(orig_query)), '$options': 'i'}
-    # find instances of the entered word in title, tags or ingredients
-    results = mongo.db.recipes.find({
-        '$or': [
-            {'title': query},
-            {'tags': query},
-            {'ingredients': query},
-        ]
-    })
-    return render_template('search.html', query=orig_query, results=results)
+    search = request.form.get('query')
+    results = mongo.db.recipes.find(
+        {'$text': {'$search': search}})
+
+    return render_template('search.html', results=results, search=search)
 
 if (__name__) == '__main__':
     app.run(host=os.environ.get('IP'),

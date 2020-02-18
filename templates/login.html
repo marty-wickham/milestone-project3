@@ -6,7 +6,7 @@
         <hr class="mb-0">
         <div class="row">
             <div class="col">
-                <h1 class="page-heading">Register</h1>
+                <h1 class="page-heading">Login</h1>
             </div>
         </div>
         <hr class="mt-0">
@@ -17,35 +17,25 @@
 <section class="container-fluid bg-light">
     <div class="container mb-4">
         <div class="row">
-            <div class="col-md-6 offset-md-3">
-                <form action="{{url_for('register')}}" method="POST">
+            <div class="col-md-4 offset-md-4">
+                <form action="{{url_for('login')}}" method="POST">
                     <div class="form-group">
                         <label for="username">Username</label>
                         <input type="text" class="form-control" id="username" name="username" required>
                     </div>
                     {% if error == 1 %}
-                        <span class="alert-warning">An account with that username already exists</span>
-                    {% endif %}
-                    <div class="form-group">
-                        <label for="email">Email Address</label>
-                        <input type="email" class="form-control" id="email" name="email" required>
-                    </div>
-                    {% if error == 2 %}
-                        <span class="alert-warning">An account with that email already exists</span>
+                        <span class="alert-warning">Invalid username</span>
                     {% endif %}
                     <div class="form-group">
                         <label for="password">Password</label>
                         <input type="password" class="form-control" id="password" name="password" required>
-                        <span id="passwordMessage" class="alert-warning"></span>
                     </div>
-                    <div class="form-group">
-                        <label for="r-password">Repeat Password</label>
-                        <input type="password" class="form-control" id="r-password" name="r-password" required>
-                        <span id="r-password-message" class="alert-warning"></span>
-                    </div>
+                    {% if error == 2 %}
+                        <span class="alert-warning">Incorrect password</span>
+                    {% endif %}
                     <div class="row text-center">
                         <div class="col">
-                            <button id="register-btn" type="submit" class="btn btn-dark" name="action">Create Account!</button>
+                            <button id="register-btn" type="submit" class="btn btn-dark" name="action">Login</button>
                         </div>
                     </div> 
                 </form>
