@@ -143,10 +143,8 @@ Next I tested the connection to my MongoDB database.
 2. Navigate to each page from the index page
 
 * Registration form:
-⋅⋅1. Go to the "Contact Us" page.
-⋅⋅2. Try to submit the empty form and verify that an error message about the required fields appears.
-⋅⋅3. Try to submit the form with an invalid email address and verify that an error message appears.
-⋅⋅4. Try to submit the form with all inputs valid and verify that a success message appears.
+1. Try to submit form with empty fields
+2. 
 
 * Login/ Modal:
 ⋅⋅1. Click "login" button.
