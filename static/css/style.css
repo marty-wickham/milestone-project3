@@ -63,6 +63,15 @@ span {
     z-index: 1;
 }
 
+/*---------------------------- Recipes-page --------------------*/
+
+#recipes-heading {
+    display: inline-block;
+}
+
+#search-bar {
+    float: right;
+}
 /*---------------------------- Form-styling --------------------*/
 
 .form-group {

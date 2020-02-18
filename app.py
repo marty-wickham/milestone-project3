@@ -1,4 +1,5 @@
 import os
+from os import path
 if path.exists("env.py"):
     import env
 from flask import Flask, render_template, redirect, request, url_for, session, flash
@@ -172,6 +173,23 @@ def view_myrecipe(recipe_id):
     the_recipe = mongo.db.recipes.find_one({'_id': ObjectId(recipe_id)})
 
     return render_template('view-myrecipe.html', recipe=the_recipe)
+
+
+@app.route('/search')
+def search():
+    """Provides logic for search bar"""
+    orig_query = request.args['query']
+    # using regular expression setting option for any case
+    query = {'$regex': re.compile('.*{}.*'.format(orig_query)), '$options': 'i'}
+    # find instances of the entered word in title, tags or ingredients
+    results = mongo.db.recipes.find({
+        '$or': [
+            {'title': query},
+            {'tags': query},
+            {'ingredients': query},
+        ]
+    })
+    return render_template('search.html', query=orig_query, results=results)
 
 if (__name__) == '__main__':
     app.run(host=os.environ.get('IP'),
