@@ -115,8 +115,13 @@ def insert_recipe():
 @app.route('/edit_recipe/<recipe_id>')
 def edit_recipe(recipe_id):
     the_recipe = mongo.db.recipes.find_one({'_id': ObjectId(recipe_id)})
+    # Store the ingredients and method keys in a variable to convert into strings
+    ingredients_list = the_recipe["ingredients"]
+    method_list = the_recipe["method"]
+    ingredients = ' '.join([str(elem) for elem in ingredients_list])
+    method = ' '.join([str(elem) for elem in method_list])
 
-    return render_template("edit-recipe.html", recipe=the_recipe)
+    return render_template("edit-recipe.html", recipe=the_recipe, ingredients=ingredients, method=method)
 
 
 @app.route('/update_recipe/<recipe_id>', methods=['POST'])
@@ -125,10 +130,10 @@ def update_recipe(recipe_id):
 
     # Converts the form input string for ingredients into a list, the data will be stored as an array in mongdb
     ingredients = request.form.get('recipe_ingredients')
-    ingredients_list = list(ingredients.split("  "))
+    ingredients_list = list(ingredients.split("\n"))
     # Converts the form input string for method into a list, the data will be stored as an array in mongdb
     method = request.form.get('recipe_method')
-    method_list = list(method.split("  "))
+    method_list = list(method.split("\n"))
 
     recipes.update(
         {'_id': ObjectId(recipe_id)},
@@ -140,7 +145,8 @@ def update_recipe(recipe_id):
          'time': request.form.get('time'),
          'difficulty': request.form.get('difficulty'),
          'ingredients': ingredients_list,
-         'method': method_list})
+         'method': method_list,
+         'user': session['username']})
 
     return redirect(url_for('get_recipes'))
 
