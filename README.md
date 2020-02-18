@@ -199,13 +199,15 @@ include:
 3. Submit the form.
 4. Check to see that the flash message is displayed when the user tries to enter a username that already exists.
 
-* Login/ Modal:
+* Login form:
 1. Create an account.
 2. Enter the username of the account in the login form.
-3. Enter an invalid password and click login.
-4. Check to see that the invalid username/password combination message is flashed.
-5. Enter the correct password anf click login to check that I am redirected to the index page.
+3. Enter an invalid username and click login.
+4. Check to see that the invalid username message is displayed.
+5. Enter the correct username and click login to check that the user is redirected to the index page.
 6. Check for the welcome message in the navbar.
+7. Login again with the correct username.
+8. 
 
 I used a *code validator* on [W3 Markup Validation Service](https://validator.w3.org/#validate_by_input) to checks for any errors that needed to be 
 fixed in my code. 
@@ -218,12 +220,7 @@ slipped under the rader.
 2. A local repository was intialized using Git. Regular changes were commited to the local repository.
 3. Github was used as a remote repository, and at the end of each development session, all local commits were pushed to (https://github.com/martycistudent/milestone-project3)
 4. The project’s source file was published from GitHub repository to GitHub pages using GitHub default settings via the master branch.
-5. GitHub Pages was then enabled to publish the site from the master branch following this path:
-.. 1. GitHub repository settings page.
-.. 2. Scrolling down to the GitHub Pages Repository box, the master branch was selected from the dropdown menu.
-.. 3. The action was saved by clicking the save button.
-
-6. The Project’s source file is now published as a site on Heroku at [Grubhub](https://martycistudent.github.io/First-milestone-project/)
+5. The Project’s source file is now published as a site on Heroku at [Grubhub](https://database-milestone-project.herokuapp.com/)
 
 ## Credits
 ### Media 
