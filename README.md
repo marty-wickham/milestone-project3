@@ -17,12 +17,8 @@ create an account in order to build and manage their own collection of recipes.
 #### What type of content will be relevant? 
 The content on the site will be made up of a collection of recipes built by the site administrator and the users themselves.
 
-Branding - the logo should be heavily emphasized and unique. I want to establish a font as well as a colour scheme.
-
-Media content – The recipes will be displayed in a card format. Each card will have an image so the users can easily see what recipe 
-                they would like to choose.
-
-Social media –  to further promote the site across other social media platforms.
+Media content – The recipes will be displayed in a card format. Each card will have an image so the users can easily see what
+                recipe they would like to choose.
 
 ### Scope
 
@@ -30,10 +26,12 @@ Social media –  to further promote the site across other social media platform
 * A brand name to help make the site more recognisable and create a sense of familiarity.
 * A mobile first website approach
 * A catalogue page displaying any recipes added by users, including a brief outline of what each recipe is.
-* A catalogue page displaying all of the recipes added by a user. 
+* A catalogue page for the use to display all of the recipes in their personal collection.
 * A registration page
 * A login page
-* Links to their social media pages
+* An "Add recipe" page
+* An "View recipe" page
+* An "Edit recipe" page
 
 #### What else can we provide for the client?
 * A news section that will update fans with any new products that are being released, or any new updates or bug fixes for current products
@@ -44,6 +42,11 @@ Social media –  to further promote the site across other social media platform
 A user would like to view a recipe ---  
 **Requirement:**
 The ability to click on a recipe and be redirected to a page where they can view all of the details of that recipe.
+
+A user would like to view all recipes ---  
+**Requirement:**
+The ability to click on a recipes navigational link and be redirected to a page where they can view all of the 
+recipes onthe website
 
 **Scenario:**
 A user wants to view other recipes available on the site ---  
@@ -60,6 +63,27 @@ A user would like to create an account ---
 **Requirement:**  
 A registration page that contains a form allowing the user to create their account.
 
+**Scenario:**
+A user would like to add a recipe ---  
+**Requirement:**  
+An add recipe page that contains a form to add a new recipe.
+
+**Scenario:**
+A user would like to view all of their own recipes ---  
+**Requirement:**  
+A "My recipes" page that contains all of the recipes added by that specific user.
+
+**Scenario:**
+A user would like to edit one of their own recipes ---  
+**Requirement:**  
+An edit recipe button and page. The page contain the same form as the add recipe page, pre-populated with the content of that recipe.
+
+**Scenario:**
+A user would like to delete one of their own recipes ---  
+**Requirement:**  
+An delete recipe button that allows the user to delete one of their own recipes.
+
+
 ### Structure
 
 #### Information Architecture
@@ -75,21 +99,22 @@ consist of a navigation bar that contains the logo of the business and the main 
 ## Features
 
 ### Existing Features
-* Feature 1 - A subscribe bar at th very top of the page that allows th user to subscribe for updates and notifications by submitting their email address 
-                 in a pop up modal.
+* Feature 1 - A "recipes" page that displays all of the recipes in the database in the form of cards.
 
-* Feature 2 - A games catalogue that take the form of cards allows the user to hover over the card and click it which will take them to the playstore/appstore
-                to download the game.  
+* Feature 2 - A registration form that allows the user to create an account.
 
-* Feature 3 - A slideshow allows the user to viewport screenshots and covers for the different gsmes so they have abetter understanding of what each game is about.
+* Feature 3 - A login form that allows the user to log in to their account.
 
-* Feature 4 - A contact page allows the user to get in touch with the company about working on projects together in the future, or to leave feedback about games.
+* Feature 4 - An "add recipe" form that allows the user to add a recipe.
 
-* Feature 5 - Social media links allow users to view the companies social media pages to view and share content.
+* Feature 5 - A "My recipes" page for the user to view their own collection of recipes.
 
-* Feature 6 - A return to top button allows the user to navigate back to the top of the page when they click it.
+* Feature 6 - An "edit" button. If the user is viewing one of their own recipes they can edit that recipe.
 
-* Feature 7 - Hover effects help users to identify buttons by changing color and size (navbar). 
+* Feature 7 - An "edit recipe" form that allows the user to edit one of their own recipes. It will render pre-populated 
+                with the data contained in the recipe. T
+
+* Feature 8 - A "delete" button that allows the user to delete one of theor own recipes.
  
 
 ## Technology's Used:
@@ -103,6 +128,7 @@ consist of a navigation bar that contains the logo of the business and the main 
 * [Font Awesome](https://fontawesome.com/) - An icon library and toolkit used to implement various icons and social logos on this webpage.
 * [JavaSccript](https://www.javascript.com/) - A high-level, interpreted programming language used to mange the interactivity of the site by
                                                 controlling the behaviour of elemetns on the page when a user interacts with them.
+* [jQuery](https://jquery.com/) - jQuery is a JavaScript library designed to simplify HTML DOM tree traversal and manipulation, as well as event handling.
 * [Gitpod](https://github.com/gitpod-io/gitpod) - The is the IDE used to write and test the code for this project.
 * [Git](https://git-scm.com/) - Git is a tool that is used to track and store changes to your codes as you work. It stores your code in a local repository.
 * [Github](https://github.com/) - Github is a remote repository used to store all of the code for this project.
@@ -110,7 +136,8 @@ consist of a navigation bar that contains the logo of the business and the main 
                                         used to manage the back end development of the project.
 * [Flask](https://flask.palletsprojects.com/en/1.1.x/) - Flask is a micro-framework which depends on Jinja and Werkzeug to manange html templates
                                                          and create and render views for each page in the project.
-* [Heroku](https://en.wikipedia.org/wiki/Heroku) - Heroku is used to deploy this project.
+* [Heroku](https://en.wikipedia.org/wiki/Heroku) - A cloud platform as a service. Heroku is used to deploy this project.
+* [MongoDB](https://www.mongodb.com/cloud/atlas) -a NoSQL document-oriented database program that uses JSON like documents with schema
 
 ## Testing
 In order to ensure the website functioned as expected, all of the testing for this project was done using the browser web developer tools. This was a very 
@@ -139,29 +166,49 @@ Next I tested the connection to my MongoDB database.
    are displayed and the connection to the database secure.
 
 * Navigation bar links:
-1. Click each link on the main page to verify they work.
-2. Navigate to each page from the index page
+1. Click each link and check to that each page is rendered.
 
-* Registration form:
+* Registration form - databse connection:
+1. Fill out the form and click the submit button to see if I am redirected back to the home page.
+2. Check the database to see if the document has been submitted.
+
+* Registration form - empty/partially filled form:
 1. Try to submit form with empty fields
-2. 
+2. Partially fill out the form.
+3. Try to submit a partially filled form and check for the required field messages.
+
+* Registration form - password field:
+1. Start typing
+2. Check to see password message is displayed when the user starts typing.
+3. Type a password 8 characters long.
+4. Check to see the password message disappears.
+5. Delete some characters so the password is less than 8 characters long. 
+6. Check to see that the password message reappears.
+7. Type in a password less than 8 characters.
+8. Click out of the password input field.
+9. Check to see that the password message remains if the password entered is less than 8 characters.
+
+* Registration form - repeat password field:
+1. Start typing a the repeat password.
+2. Check to see that the repeat password message appears.
+3. Check that the submit button is disabled if the passwords do not match.
+3. Type the same password and check to see that the message changes accordingly when the passwords match.
+4. Click the submit button to verify that the submit button has been re-enabled.
+
+* Registration form - username field:
+1. Type in a username that exists in the database.
+2. Fill out the form.
+3. Submit the form.
+4. Check to see that the flash message is displayed when the user tries to enter a username that already exists.
 
 * Login/ Modal:
-⋅⋅1. Click "login" button.
-⋅⋅2. Try to submit without any information and verify that an error message about the required fields appears.
-⋅⋅3. Try t submit an invalid email address and and verify that a relevant error message appears.
-⋅⋅4. Verify that a successful message appears by submitting a valid email address.
+1. Create an account.
+2. Enter the username of the account in the login form.
+3. Enter an invalid password and click login.
+4. Check to see that the invalid username/password combination message is flashed.
+5. Enter the correct password anf click login to check that I am redirected to the index page.
+6. Check for the welcome message in the navbar.
 
-* Grid system:
-⋅⋅1. Open bwoser developer tools. 
-⋅⋅2. Display device toolbar. 
-⋅⋅3. Select iPhone 5SE.
-⋅⋅4. Review layout for small screen widths.
-⋅⋅5. Select Ipad in the device toolbar.
-⋅⋅6. Review layout for medium screen widths.
-⋅⋅7. Select Laptop in the device toolbar.
-⋅⋅8. Review layout for large screen sizes.
-⋅⋅9. Make any necessary changes. 
 
 * Layout - mostly padding and margins, to ensure adequate spacing between elements as well as sizing for elements.
 
