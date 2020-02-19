@@ -6,6 +6,7 @@ from flask import Flask, render_template, redirect, request, url_for, session, f
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 import bcrypt
+import re
 
 app = Flask(__name__)
 
@@ -191,11 +192,20 @@ def view_myrecipe(recipe_id):
 
 @app.route('/search')
 def search():
-    search = request.form.get('query')
-    results = mongo.db.recipes.find(
-        {'$text': {'$search': search}})
-
-    return render_template('search.html', results=results, search=search)
+    """Provides logic for search bar"""
+    orig_query = request.args['query']
+    # using regular expression setting option for any case
+    query = {'$regex': re.compile('.*{}.*'.format(orig_query)), '$options': 'i'}
+    # find instances of the entered word in title, tags or ingredients
+    results = mongo.db.recipes.find({
+        '$or': [
+            {'title': query},
+            {'tags': query},
+            {'ingredients': query},
+        ]
+    })
+    
+    return render_template('search.html', query=orig_query, results=results)
 
 if (__name__) == '__main__':
     app.run(host=os.environ.get('IP'),

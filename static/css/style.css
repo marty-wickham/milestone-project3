@@ -72,6 +72,13 @@ span {
 #search-bar {
     float: right;
 }
+
+/*---------------------------- View recipe-page --------------------*/
+
+.table, td {
+    white-space: pre-wrap;
+}
+
 /*---------------------------- Form-styling --------------------*/
 
 .form-group {

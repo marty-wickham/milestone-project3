@@ -88,11 +88,6 @@ An delete recipe button that allows the user to delete one of their own recipes.
 For this project I will be using a standard tree structure. To achieve this, the header of each page will 
 consist of a navigation bar that contains the logo of the business and the main navigational links for each page in the website. 
 
-### Skeleton
-
-#### Wireframe
-[A link to my Mobile wireframe]()
-[A link to my Desktop wireframe]()
 
 ## Features
 
@@ -207,7 +202,26 @@ include:
 5. Enter the correct username and click login to check that the user is redirected to the index page.
 6. Check for the welcome message in the navbar.
 7. Login again with the correct username.
-8. 
+8. Enter an incorrect password and click login.
+9. Check to see that the invalid password messaage is displayed.
+
+* Add Recipe Feature:
+1. Login and navigate to the Add recipe page
+2. Fill out the form and click submit
+3. Check to see that the user is redirected to the index page and the recipe has been added to the recipes page.
+
+* Edit Recipe Feature: 
+1. Login and navigate to "My recipes"
+2. Click a recipe to view and navigat to the "view recipe" page.
+3. Click on on the edit button and navigate to the "edit recipe" page
+4. Check to see that the form is pre-populated.
+5. Change something in the recipe and click submit.
+6. Check to see that the user is redirected to the "view recipe" page and the recipe has been updated accordingly.
+
+* Delete Recipe Feature:
+1. Login and navigate to "My recipes".
+2. Click a recipe to view and navigate to the "view recipe" page.
+3. Click the delete button and check to see that the user is redirected to the "recipes" page and the recipe has been deleted.
 
 I used a *code validator* on [W3 Markup Validation Service](https://validator.w3.org/#validate_by_input) to checks for any errors that needed to be 
 fixed in my code. 
@@ -215,11 +229,18 @@ fixed in my code.
 Finally, I posted my project in the peer-code-review channel on Slack and received some very helpful criticism to help me fix some mistakes that 
 slipped under the rader.
 
+## Features Left to implement
+The only feature in the project I could not get working was the search bar functionality. The search bar does not yield
+any results at the moment. 
+
 ## Deployment 
 1. The project was written and developed in the Gitpod IDE.
 2. A local repository was intialized using Git. Regular changes were commited to the local repository.
 3. Github was used as a remote repository, and at the end of each development session, all local commits were pushed to (https://github.com/martycistudent/milestone-project3)
 4. The project’s source file was published from GitHub repository to GitHub pages using GitHub default settings via the master branch.
+5. The project was linked to Heroku for deployment, a requirements.txt file and a Procfile were created to deploy the project on Heroku.
+6. Configuration variables had to be set in order to get the project running. These had to be set in both the Gitpod IDE and on Heroku.
+These included, PORT, IP, Mongo URI and a SECRET KEY.
 5. The Project’s source file is now published as a site on Heroku at [Grubhub](https://database-milestone-project.herokuapp.com/)
 
 ## Credits
